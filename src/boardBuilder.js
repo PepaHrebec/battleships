@@ -90,21 +90,27 @@ class gameBoardObj {
     }
   }
 
+  hitShip(x, y) {
+    this.boardArr[x][y].ship.hit();
+    if (this.boardArr[x][y].ship.isSunk()) {
+      this.shipCount -= 1;
+      console.log("Ship has been sunk.");
+      this.gameEndCheck();
+    }
+  }
+
   // hits the board and logs the index of boardArr into hitList
   receiveAttack(x, y) {
     if (this.checkHitList(x, y)) {
-      console.log("Already been hit.");
       return false;
     } else {
       // still relies on hitting a ship
       this.hitList.push(this.boardArr[x][y].index);
-      this.boardArr[x][y].ship.hit();
-      if (this.boardArr[x][y].ship.isSunk()) {
-        this.shipCount -= 1;
-        console.log("Ship has been sunk.");
-        this.gameEndCheck();
+      if (this.boardArr[x][y].ship !== null) {
+        this.hitShip(x, y);
+        return true;
       }
-      return true;
+      return false;
     }
   }
 

@@ -10,7 +10,7 @@ class Player {
       console.log(`Player ${this.name} has hit a ship.`);
       return true;
     } else {
-      console.log(`Player ${this.name} has missed.`);
+      console.log(`Player ${this.name} has missed / already hit this spot.`);
       return false;
     }
   }
