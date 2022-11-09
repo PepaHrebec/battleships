@@ -2,7 +2,7 @@ import { gameBoardObj } from "./boardBuilder";
 import { Player } from "./playerBuilder";
 
 const board = new gameBoardObj();
-const me = new Player("Joe", true, board);
+const me = new Player("Joe", board);
 board.placeShip(0, 0, 4);
 
 board.placeShip(1, 1, 2);
@@ -15,6 +15,11 @@ console.log(board.boardArr[1][0]);
 me.attack(0, 0);
 me.attack(1, 0);
 me.attack(0, 0);
+// me.aiAttack();
+// me.aiAttack();
+// me.aiAttack();
+// me.aiAttack();
+
 console.log(board.boardArr[0][0]);
 console.log(board.boardArr[1][0]);
 board.showBoard();

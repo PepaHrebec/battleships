@@ -104,12 +104,13 @@ class gameBoardObj {
     if (this.checkHitList(x, y)) {
       return false;
     } else {
-      // still relies on hitting a ship
       this.hitList.push(this.boardArr[x][y].index);
       if (this.boardArr[x][y].ship !== null) {
         this.hitShip(x, y);
+        console.log(`Ship hit at coordinates [${x}][${y}]`);
         return true;
       }
+      console.log(`Sea hit at coordinates [${x}][${y}]`);
       return false;
     }
   }
