@@ -47,7 +47,7 @@ class gameBoardObj {
     }
     this.loadBoardArr();
     this.hitList = [];
-    this.shipCount = 5;
+    this.shipCount = 0;
   }
 
   // inserts boardArrObject into the boardArr
@@ -63,8 +63,15 @@ class gameBoardObj {
 
   // places ship into the boardArr objects
   placeShip(x, y, len) {
-    this.boardArr[x][y].ship = new shipObj(2);
-    this.boardArr[x + 1][y].ship = this.boardArr[x][y].ship;
+    if (x + len > 10) {
+      console.log("Cannot be placed here");
+    } else {
+      this.boardArr[x][y].ship = new shipObj(len);
+      for (let i = 1; i < len; i++) {
+        this.boardArr[x + i][y].ship = this.boardArr[x][y].ship;
+      }
+      this.shipCount += 1;
+    }
   }
 
   // checks if the place has been hit
@@ -77,6 +84,12 @@ class gameBoardObj {
     return flag;
   }
 
+  gameEndCheck() {
+    if (this.shipCount === 0) {
+      console.log("Game has ended");
+    }
+  }
+
   // hits the ship and logs the index of boardArr into hitList
   receiveAttack(x, y) {
     if (this.checkHitList(x, y)) {
@@ -87,6 +100,7 @@ class gameBoardObj {
       if (this.boardArr[x][y].ship.isSunk()) {
         this.shipCount -= 1;
         console.log("Ship has been sunk.");
+        this.gameEndCheck();
       }
     }
   }
@@ -94,7 +108,7 @@ class gameBoardObj {
   // logs the board
   showBoard() {
     for (let i = 0; i < 10; i++) {
-      let str = `${i + 1} `;
+      let str = `${i} `;
       for (let j = 0; j < 10; j++) {
         if (this.boardArr[i][j].ship === null) {
           str = `${str} .`;
