@@ -79,7 +79,7 @@ class gameBoardObj {
     let flag = false;
     if (this.hitList.includes(this.boardArr[x][y].index)) {
       flag = true;
-      return;
+      return flag;
     }
     return flag;
   }
@@ -90,11 +90,13 @@ class gameBoardObj {
     }
   }
 
-  // hits the ship and logs the index of boardArr into hitList
+  // hits the board and logs the index of boardArr into hitList
   receiveAttack(x, y) {
     if (this.checkHitList(x, y)) {
-      console.log("Invalid target");
+      console.log("Already been hit.");
+      return false;
     } else {
+      // still relies on hitting a ship
       this.hitList.push(this.boardArr[x][y].index);
       this.boardArr[x][y].ship.hit();
       if (this.boardArr[x][y].ship.isSunk()) {
@@ -102,6 +104,7 @@ class gameBoardObj {
         console.log("Ship has been sunk.");
         this.gameEndCheck();
       }
+      return true;
     }
   }
 
