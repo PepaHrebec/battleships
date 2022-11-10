@@ -102,16 +102,16 @@ class gameBoardObj {
   // hits the board and logs the index of boardArr into hitList
   receiveAttack(x, y) {
     if (this.checkHitList(x, y)) {
-      return false;
+      return 2; //clicked on a hit place
     } else {
       this.hitList.push(this.boardArr[x][y].index);
       if (this.boardArr[x][y].ship !== null) {
         this.hitShip(x, y);
         console.log(`Ship hit at coordinates [${x}][${y}]`);
-        return true;
+        return 1; //hit ship
       }
       console.log(`Sea hit at coordinates [${x}][${y}]`);
-      return false;
+      return 0; //hit water
     }
   }
 

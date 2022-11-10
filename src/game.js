@@ -17,13 +17,28 @@ function buildBoard(block) {
   blockDiv.appendChild(board);
 }
 
-function connectBoard(block, player) {
-  const squares = document.querySelectorAll(`.${block}-square`);
+function connectPlayerBoard(enemyBlock, player, AI) {
+  const squares = document.querySelectorAll(`.${enemyBlock}-square`);
   squares.forEach((square) => {
     square.addEventListener("click", function () {
-      player.attack(square.dataset.coordinateX, square.dataset.coordinateY);
+      switch (
+        player.attack(square.dataset.coordinateX, square.dataset.coordinateY)
+      ) {
+        case 1:
+          square.style.backgroundColor = "red";
+          AI.aiAttack();
+          break;
+
+        case 0:
+          square.style.backgroundColor = "gray";
+          AI.aiAttack();
+          break;
+
+        default:
+          break;
+      }
     });
   });
 }
 
-export { buildBoard, connectBoard };
+export { buildBoard, connectPlayerBoard };
