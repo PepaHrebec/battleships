@@ -1,3 +1,5 @@
+$squareSide: 2em;
+
 * {
   margin: 0;
   padding: 0;
@@ -5,4 +7,24 @@
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+body > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, $squareSide);
+}
+
+.square {
+  width: $squareSide;
+  height: $squareSide;
+  outline: solid black;
 }

@@ -5,4 +5,24 @@
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+body > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 2em);
+}
+
+.square {
+  width: 2em;
+  height: 2em;
+  outline: solid black;
 }/*# sourceMappingURL=styles.css.map */
