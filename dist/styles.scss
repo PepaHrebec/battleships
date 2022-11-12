@@ -23,8 +23,20 @@ body > div {
   grid-template-columns: repeat(10, $squareSide);
 }
 
+.has_ship {
+  background-color: #bde0fe;
+}
+
+.hit {
+  background-color: #ef233c;
+}
+
+.water {
+  background-color: #023e8a;
+}
+
 .square {
   width: $squareSide;
   height: $squareSide;
-  outline: solid black;
+  outline: solid #3a86ff;
 }

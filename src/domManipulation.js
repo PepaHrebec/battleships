@@ -25,31 +25,38 @@ function highlightShips(meBlock, enemy) {
         square.dataset.coordinateY
       ].ship !== null
     ) {
-      square.style.backgroundColor = "orange";
+      square.classList.add("has_ship");
     }
   });
+}
+
+function boardAttack(square, player, AI) {
+  if (player.enemyBoard.gameEndCheck()) {
+    return true;
+  }
+  switch (
+    player.attack(square.dataset.coordinateX, square.dataset.coordinateY)
+  ) {
+    case 1:
+      square.classList.add("hit");
+      AI.aiAttack();
+      break;
+
+    case 0:
+      square.classList.add("water");
+      AI.aiAttack();
+      break;
+
+    default:
+      break;
+  }
 }
 
 function connectPlayerBoard(enemyBlock, player, AI) {
   const squares = document.querySelectorAll(`.${enemyBlock}-square`);
   squares.forEach((square) => {
     square.addEventListener("click", function () {
-      switch (
-        player.attack(square.dataset.coordinateX, square.dataset.coordinateY)
-      ) {
-        case 1:
-          square.style.backgroundColor = "red";
-          AI.aiAttack();
-          break;
-
-        case 0:
-          square.style.backgroundColor = "gray";
-          AI.aiAttack();
-          break;
-
-        default:
-          break;
-      }
+      boardAttack(square, player, AI);
     });
   });
 }

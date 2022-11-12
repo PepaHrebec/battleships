@@ -36,11 +36,11 @@ class Player {
     );
     switch (this.attack(randX, randY)) {
       case 1:
-        square.style.backgroundColor = "red";
+        square.classList.add("hit");
         break;
 
       default:
-        square.style.backgroundColor = "grey";
+        square.classList.add("water");
         break;
     }
   }

@@ -86,7 +86,7 @@ class gameBoardObj {
 
   gameEndCheck() {
     if (this.shipCount === 0) {
-      console.log("Game has ended");
+      return true;
     }
   }
 

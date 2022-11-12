@@ -21,8 +21,20 @@ body > div {
   grid-template-columns: repeat(10, 2em);
 }
 
+.has_ship {
+  background-color: #bde0fe;
+}
+
+.hit {
+  background-color: #ef233c;
+}
+
+.water {
+  background-color: #023e8a;
+}
+
 .square {
   width: 2em;
   height: 2em;
-  outline: solid black;
+  outline: solid #3a86ff;
 }/*# sourceMappingURL=styles.css.map */
