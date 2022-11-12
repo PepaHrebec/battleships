@@ -31,11 +31,18 @@ class Player {
       randX = Math.floor(Math.random() * 10);
       randY = Math.floor(Math.random() * 10);
     }
-    this.attack(randX, randY);
     const square = document.querySelector(
       `[data-coordinate-x="${randX}"][data-coordinate-y="${randY}"].right-block-square`
     );
-    square.style.backgroundColor = "grey";
+    switch (this.attack(randX, randY)) {
+      case 1:
+        square.style.backgroundColor = "red";
+        break;
+
+      default:
+        square.style.backgroundColor = "grey";
+        break;
+    }
   }
 }
 

@@ -1,6 +1,10 @@
 import { gameBoardObj } from "./boardBuilder";
 import { Player } from "./playerBuilder";
-import { buildBoard, connectPlayerBoard } from "./game";
+import {
+  buildBoard,
+  connectPlayerBoard,
+  highlightShips,
+} from "./domManipulation";
 
 const myBoard = new gameBoardObj(); //creates the object
 const aiBoard = new gameBoardObj();
@@ -23,6 +27,8 @@ aiBoard.placeShip(1, 1, 2);
 aiBoard.placeShip(4, 8, 5);
 aiBoard.placeShip(8, 5, 2);
 aiBoard.placeShip(7, 3, 3);
+
+highlightShips("right-block", AI);
 
 console.log(myBoard.boardArr[0][0]);
 console.log(myBoard.boardArr[1][0]);

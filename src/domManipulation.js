@@ -17,6 +17,19 @@ function buildBoard(block) {
   blockDiv.appendChild(board);
 }
 
+function highlightShips(meBlock, enemy) {
+  const squares = document.querySelectorAll(`.${meBlock}-square`);
+  squares.forEach((square) => {
+    if (
+      enemy.enemyBoard.boardArr[square.dataset.coordinateX][
+        square.dataset.coordinateY
+      ].ship !== null
+    ) {
+      square.style.backgroundColor = "orange";
+    }
+  });
+}
+
 function connectPlayerBoard(enemyBlock, player, AI) {
   const squares = document.querySelectorAll(`.${enemyBlock}-square`);
   squares.forEach((square) => {
@@ -41,4 +54,4 @@ function connectPlayerBoard(enemyBlock, player, AI) {
   });
 }
 
-export { buildBoard, connectPlayerBoard };
+export { buildBoard, connectPlayerBoard, highlightShips };
