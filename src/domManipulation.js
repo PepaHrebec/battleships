@@ -31,7 +31,11 @@ function highlightShips(meBlock, enemy) {
 }
 
 function boardAttack(square, player, AI) {
-  if (player.enemyBoard.gameEndCheck()) {
+  if (
+    player.enemyBoard.gameEndCheck()
+    // &&
+    // document.querySelector("#victory_div") == null
+  ) {
     return true;
   }
   switch (
